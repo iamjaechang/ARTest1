@@ -1,4 +1,7 @@
 <!doctype html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Bally Design AR Model Viewer</title>
 <html lang="en">
 
 <head>
@@ -48,9 +51,7 @@
 			}
 		}
 	</style>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> Bally Design AR Model Viewer</title>
+
 	<script type="module" src="https://unpkg.com/@google/model-viewer@1.8.0/dist/model-viewer.min.js"></script>
 	<script nomodule src="https://unpkg.com/@google/model-viewer@1.8.0/dist/model-viewer-legacy.js"></script>
 	<style>
@@ -94,58 +95,49 @@
 		}
 
 		@keyframes circle {
-			from {
-				transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
-			}
+		    from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+		    to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+		  }
 
-			to {
-				transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
-			}
-		}
+		  @keyframes elongate {
+		    from { transform: translateX(100px); }
+		    to   { transform: translateX(-100px); }
+		  }
 
-		@keyframes elongate {
-			from {
-				transform: translateX(100px);
-			}
+		  model-viewer > #ar-prompt {
+		    position: absolute;
+		    left: 50%;
+		    bottom: 175px;
+		    animation: elongate 2s infinite ease-in-out alternate;
+		    display: none;
+		  }
 
-			to {
-				transform: translateX(-100px);
-			}
-		}
+		  model-viewer[ar-status="session-started"] > #ar-prompt {
+		    display: block;
+		  }
 
-		model-viewer>#ar-prompt {
-			position: absolute;
-			left: 50%;
-			bottom: 175px;
-			animation: elongate 2s infinite ease-in-out alternate;
-			display: none;
-		}
+		  model-viewer > #ar-prompt > img {
+		    animation: circle 4s linear infinite;
+		  }
 
-		model-viewer[ar-status="session-started"]>#ar-prompt {
-			display: block;
-		}
+		  model-viewer > #ar-failure {
+		    position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    bottom: 175px;
+		    display: none;
+		  }
 
-		model-viewer>#ar-prompt>img {
-			animation: circle 4s linear infinite;
-		}
-
-		model-viewer>#ar-failure {
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			bottom: 175px;
-			display: none;
-		}
-
-		model-viewer[ar-tracking="not-tracking"]>#ar-failure {
-			display: block;
+		  model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+		    display: block;
+		  }
 		}
 	</style>
 
 <body>
-	test6
+	test7
 	<model-viewer src="asset/BallyMug.glb" ar ar-modes="scene-viewer webxr quick-look" ios-src="asset/BallyMug.usdz" shadow-intensity="1.0" environment-image="asset/directional.hdr" ar-scale="fixed" ar ar-placement="floor" exposure="1.2"
-		shadow-intensity="3.4" shadow-softness="0.56" camera-orbit="417deg 57.67deg auto" min-camera-orbit="auto 0deg auto" max-camera-orbit="auto 104deg auto" camera-controls ar autoplay auto-rotate>
+		shadow-intensity="3.4" shadow-softness="0.56" camera-orbit="417deg 57.67deg auto" min-camera-orbit="auto 0deg auto" max-camera-orbit="auto 104deg auto" camera-controls ar auto-rotate>
 
 		<div class="progress-bar hide" slot="progress-bar">
 			<div class="update-bar"></div>
