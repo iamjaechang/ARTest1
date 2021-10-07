@@ -93,10 +93,30 @@
 			outline: 1px solid #4285f4;
 		}
 
+		@keyframes circle {
+			from {
+				transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+			}
+
+			to {
+				transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+			}
+		}
+
+		@keyframes elongate {
+			from {
+				transform: translateX(100px);
+			}
+
+			to {
+				transform: translateX(-100px);
+			}
+		}
+
 		model-viewer>#ar-prompt {
 			position: absolute;
 			left: 50%;
-			bottom: 165px;
+			bottom: 175px;
 			animation: elongate 2s infinite ease-in-out alternate;
 			display: none;
 		}
@@ -107,6 +127,18 @@
 
 		model-viewer>#ar-prompt>img {
 			animation: circle 4s linear infinite;
+		}
+
+		model-viewer>#ar-failure {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 175px;
+			display: none;
+		}
+
+		model-viewer[ar-tracking="not-tracking"]>#ar-failure {
+			display: block;
 		}
 	</style>
 
@@ -119,20 +151,23 @@
 			<div class="update-bar"></div>
 		</div>
 		<button slot="ar-button" id="ar-button"> View in your space </button>
-	<div id="ar-prompt">
-		<img src="https://modelviewer.dev/shared-assets/icons/hand.png">
-	</div>
-</model-viewer>
+		<div id="ar-prompt">
+			<img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+		</div>
+		<button id="ar-failure">
+			AR is not tracking!
+		</button>
+	</model-viewer>
 
 	<center>
-			<div class="mobileShow">
-				<img src="asset/instruction_mobile.png" style="max-width:95%; height:auto; padding: 0px 0px 0px 10px;">
-			</div>
-			<div class="mobileHide">
-				<picture>
-					<img src="asset/instruction_web.png" style="width:500px; height:130px;">
-				</picture>
-			</div>
+		<div class="mobileShow">
+			<img src="asset/instruction_mobile.png" style="max-width:95%; height:auto; padding: 0px 0px 0px 10px;">
+		</div>
+		<div class="mobileHide">
+			<picture>
+				<img src="asset/instruction_web.png" style="width:500px; height:130px;">
+			</picture>
+		</div>
 
 
 
