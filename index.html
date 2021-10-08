@@ -138,33 +138,32 @@
 		model-viewer[ar-tracking="not-tracking"]>#ar-failure {
 			display: block;
 		}
-
 	</style>
 
 	<style>
-	#overlay {
-	  position: fixed;
-	  display: none;
-	  width: 100%;
-	  height: 100%;
-	  top: 0;
-	  left: 0;
-	  right: 0;
-	  bottom: 0;
-	  background-color: rgba(0,0,0,0.5);
-	  z-index: 2;
-	  cursor: pointer;
-	}
+		#overlay {
+			position: fixed;
+			display: none;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 2;
+			cursor: pointer;
+		}
 
-	#text{
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  font-size: 50px;
-	  color: white;
-	  transform: translate(-50%,-50%);
-	  -ms-transform: translate(-50%,-50%);
-	}
+		#text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			font-size: 50px;
+			color: white;
+			transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+		}
 	</style>
 
 	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -173,38 +172,53 @@
 
 <body style="text-align:center">
 	<div id="overlay" onclick="off()">
-	  <div id="text">Overlay Text</div>
+		<div id="text">Overlay Text</div>
 	</div>
 
-		<model-viewer src="asset/BallyMug.glb" ar ar-modes="scene-viewer quick-look" ios-src="asset/BallyMug.usdz" ar-scale="fixed" ar ar-placement="floor" exposure="1.0" shadow-intensity="1"	camera-orbit="417deg 57.67deg auto" min-camera-orbit="auto 0deg auto" max-camera-orbit="auto 104deg auto" camera-controls ar auto-rotate>
+	<model-viewer src="asset/BallyMug.glb" ar ar-modes="scene-viewer quick-look" ios-src="asset/BallyMug.usdz" ar-scale="fixed" ar ar-placement="floor" exposure="1.0" shadow-intensity="1" camera-orbit="417deg 57.67deg auto"
+		min-camera-orbit="auto 0deg auto" max-camera-orbit="auto 104deg auto" camera-controls ar auto-rotate>
 
-			<button slot="ar-button" id="ar-button" onclick="on()"> View in your space
 
-			</button>
-			<div id="ar-prompt">
-				<img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+			<a class="trigger_popup_fricc"><button slot="ar-button" id="ar-button"> View in your space</button></a>
+
+			<div class="hover_bkgr_fricc">
+			    <span class="helper"></span>
+			    <div>
+			        <div class="popupCloseButton">&times;</div>
+			        <p>Add any HTML content<br />inside the popup box!</p>
+			    </div>
 			</div>
-			<script>
-function on() {
-  document.getElementById("overlay").style.display = "block";
-}
-
-function off() {
-  document.getElementById("overlay").style.display = "none";
-}
-</script>
-
-		</model-viewer>
 
 
-		<div class="mobileShow">
-			<img src="asset/Mobile-Instruction-2.png" style="max-width:95%; height:auto; padding: 0px 0px 0px 10px;">
+		<div id="ar-prompt">
+			<img src="https://modelviewer.dev/shared-assets/icons/hand.png">
 		</div>
-		<div class="mobileHide">
-			<picture>
-				<img src="asset/instruction_web.png" style="width:500px; height:130px;">
-			</picture>
-		</div>
+		<script>
+			$(window).load(function() {
+				$(".trigger_popup_fricc").click(function() {
+					$('.hover_bkgr_fricc').show();
+				});
+				$('.hover_bkgr_fricc').click(function() {
+					$('.hover_bkgr_fricc').hide();
+				});
+				$('.popupCloseButton').click(function() {
+					$('.hover_bkgr_fricc').hide();
+				});
+			});
+			}
+		</script>
+
+	</model-viewer>
+
+
+	<div class="mobileShow">
+		<img src="asset/Mobile-Instruction-2.png" style="max-width:95%; height:auto; padding: 0px 0px 0px 10px;">
+	</div>
+	<div class="mobileHide">
+		<picture>
+			<img src="asset/instruction_web.png" style="width:500px; height:130px;">
+		</picture>
+	</div>
 
 
 
