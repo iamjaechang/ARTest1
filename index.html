@@ -115,7 +115,7 @@
 			position: absolute;
 			left: 50%;
 			bottom: 175px;
-			animation: elongate 2s ease-in-out alternate;
+			animation: elongate 2s infinite ease-in-out alternate;
 			display: none;
 		}
 
@@ -145,10 +145,9 @@
 	<script nomodule src="https://unpkg.com/@google/model-viewer@1.8.0/dist/model-viewer-legacy.js"></script>
 
 <body>
-2
 	<center>
 
-		<model-viewer src="asset/BallyMug.glb" ar ar-modes="webxr scene-viewer quick-look" ios-src="asset/BallyMug.usdz" shadow-intensity="1.0" environment-image="asset/directional.hdr" ar-scale="fixed" ar ar-placement="floor" exposure="1.2"
+		<model-viewer src="asset/BallyMug.glb" ar ar-modes="scene-viewer quick-look" ios-src="asset/BallyMug.usdz" shadow-intensity="1.0" environment-image="asset/directional.hdr" ar-scale="fixed" ar ar-placement="floor" exposure="1.2"
 			shadow-intensity="3.4" shadow-softness="0.56" camera-orbit="417deg 57.67deg auto" min-camera-orbit="auto 0deg auto" max-camera-orbit="auto 104deg auto" camera-controls ar auto-rotate interaction-prompt="auto">
 
 			<button slot="ar-button" id="ar-button"> View in your space </button>
