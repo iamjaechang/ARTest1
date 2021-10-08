@@ -171,15 +171,12 @@
 </head>
 
 <body style="text-align:center">
-	<div id="overlay" onclick="off()">
-		<div id="text">Overlay Text</div>
-	</div>
 
 	<model-viewer src="asset/BallyMug.glb" ar ar-modes="scene-viewer quick-look" ios-src="asset/BallyMug.usdz" ar-scale="fixed" ar ar-placement="floor" exposure="1.0" shadow-intensity="1" camera-orbit="417deg 57.67deg auto"
 		min-camera-orbit="auto 0deg auto" max-camera-orbit="auto 104deg auto" camera-controls ar auto-rotate>
 
-
-			<a class="trigger_popup_fricc"><button slot="ar-button" id="ar-button"> View in your space</button></a>
+		<button slot="ar-button" id="ar-button"> <a class="trigger_popup_fricc">View in your space
+			</a>
 
 			<div class="hover_bkgr_fricc">
 			    <span class="helper"></span>
@@ -189,7 +186,7 @@
 			    </div>
 			</div>
 
-
+		</button>
 		<div id="ar-prompt">
 			<img src="https://modelviewer.dev/shared-assets/icons/hand.png">
 		</div>
