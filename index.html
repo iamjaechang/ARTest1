@@ -52,8 +52,20 @@
 		}
 	</style>
 
-	<script type="module" src="https://unpkg.com/@google/model-viewer@1.8/dist/model-viewer.min.js"></script>
-	<script nomodule src="https://unpkg.com/@google/model-viewer@1.8/dist/model-viewer-legacy.js"></script>
+	<!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+	<script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+	<!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+	<script src="https://unpkg.com/intersection-observer/intersection-observer.js"></script>
+
+	<!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+	<script src="https://unpkg.com/resize-observer-polyfill/dist/ResizeObserver.js"></script>
+
+	<!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+	<script src="https://unpkg.com/focus-visible/dist/focus-visible.js" defer></script>
+	<script type="module" src="https://unpkg.com/@google/model-viewer@1.5.0/dist/model-viewer.min.js"></script>
+	<script nomodule src="https://unpkg.com/@google/model-viewer@1.5.0/dist/model-viewer-legacy.js"></script>
+
 	<style>
 		model-viewer {
 			height: 550px;
@@ -124,10 +136,6 @@
 
 		model-viewer[ar-status="session-started"]>#ar-prompt {
 			display: block;
-		}
-
-		model-viewer[ar-status="object-placed"]>#ar-prompt {
-			animation: circle 4s linear infinite;
 		}
 
 		model-viewer>#ar-prompt>img {
